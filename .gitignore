@@ -1,3 +1,4 @@
 /api/DigitalCollaborator/bin/
 /api/DigitalCollaborator/obj/
 /api/DigitalCollaborator/.idea/
+/api/DigitalCollaborator/appsettings.Development.json
