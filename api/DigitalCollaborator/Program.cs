@@ -10,7 +10,7 @@ var connString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddCors(opts =>
 {
     opts.AddPolicy("AllowFrontend", p => p
-        .WithOrigins("http://127.0.0.1:5500")
+        .WithOrigins("")
         .AllowAnyMethod()
         .AllowAnyHeader());
 });
@@ -25,12 +25,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors("AllowFrontend");
+
 // Executa APENAS em ambiente de desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors("AllowFrontend");
 }
 
 // Configura o pipeline de solicitação HTTP

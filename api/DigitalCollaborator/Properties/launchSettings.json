@@ -7,7 +7,7 @@
       "launchBrowser": false,
       "applicationUrl": "http://localhost:5501",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     }
   }
