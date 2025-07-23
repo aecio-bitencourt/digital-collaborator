@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GOMAQ • Controller</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Controle de Colaboradores</h1>
+    </header>
+    <main>
+      <!-- Seção de Listagem -->
+      <section>
+        <h2>Lista de Colaboradores</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Depto.</th>
+              <th>Andar</th>
+              <th>Ramal</th>
+            </tr>
+          </thead>
+          <tbody id="collaborators-tbody"></tbody>
+        </table>
+      </section>
+      <!-- Seção de Cadastro -->
+      <section>
+        <h2>Novo Colaborador</h2>
+        <form id="form-colaborador">
+          <label for="nome">Nome do Colaborador</label>
+          <input type="text" id="nome" name="nome" required />
+          <label for="departamento">Departamento</label>
+          <input type="text" id="departamento" name="departamento" required />
+          <label for="andar">Andar</label>
+          <input type="text" id="andar" name="andar" required />
+          <label for="ramal">Ramal</label>
+          <input type="text" id="ramal" name="ramal" required />
+          <button type="submit" class="btn">Cadastrar Colaborador</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="assets/scripts/main.js"></script>
+  </body>
+</html>
