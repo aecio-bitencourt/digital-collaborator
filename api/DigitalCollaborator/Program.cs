@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Faz a leitura da string de conexão com o banco de dados
-var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+//var connString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // CORS
 builder.Services.AddCors(opts =>
@@ -16,8 +16,8 @@ builder.Services.AddCors(opts =>
 });
 
 // Registra o DbContext
-builder.Services.AddDbContext<AppDbContext>(opts =>
-    opts.UseMySQL(connString));
+builder.Services.AddDbContextFactory<AppDbContext>(opts =>
+    opts.UseMySQL(builder.Configuration["MySQL"]));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
