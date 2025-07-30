@@ -25,6 +25,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Variavel de ambiente na Railway
+if (builder.Environment.IsProduction() && builder.Configuration.GetValue<int?>("PORT") is not null)
+{
+    builder.WebHost.UseUrls($"http://*:{builder.Configuration.GetValue<int>("PORT")}");
+}
+
 app.UseCors("AllowFrontend");
 
 // Executa APENAS em ambiente de desenvolvimento
