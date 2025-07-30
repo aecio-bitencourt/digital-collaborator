@@ -33,12 +33,8 @@ if (builder.Environment.IsProduction() && builder.Configuration.GetValue<int?>("
 
 app.UseCors("AllowFrontend");
 
-// Executa APENAS em ambiente de desenvolvimento
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Configura o pipeline de solicitação HTTP
 app.UseAuthorization();
