@@ -1,9 +1,0 @@
-﻿services:
-  api_exemplo_render:
-    container_name: api_digital_collaborator
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: api_digital_collaborator
-    ports:
-      - "8075:8080"
