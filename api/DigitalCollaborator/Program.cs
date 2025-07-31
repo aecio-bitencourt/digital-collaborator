@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(opts =>
 {
     opts.AddPolicy("AllowFrontend", p => p
-        .WithOrigins("")
+        .WithOrigins("https://digital-collaborator.vercel.app")
         .AllowAnyMethod()
         .AllowAnyHeader());
 });
