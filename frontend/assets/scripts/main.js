@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const TBODY = document.getElementById("collaborators-tbody");
   const FORM = document.getElementById("form-colaborador");
-  const URL = "http://localhost:5032/api/colaboradores";
+  const URL = "https://digital-collaborator-production.up.railway.app/api/colaboradores";
 
   // Função para consumir a API e exibir os dados
   async function loadCollaborators() {
