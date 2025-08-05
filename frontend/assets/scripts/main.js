@@ -1,8 +1,7 @@
 // Aguarda até que o DOM esteja pronto
 document.addEventListener("DOMContentLoaded", () => {
-  const TBODY = document.getElementById("collaborators-tbody");
-  const FORM = document.getElementById("form-colaborador");
   const URL = "http://localhost:5032/api/colaboradores";
+  const container = document.getElementById("tickets-container");
 
   // Função para consumir a API e exibir os dados
   async function loadCollaborators() {
@@ -18,30 +17,51 @@ document.addEventListener("DOMContentLoaded", () => {
       // Limpe o corpo da tabela
       const OBJ = await RESPONSE.json();
 
-      //
-      TBODY.innerHTML = "";
-
-      // Para cada colaborador, cria um <tr> e inseri o <tbody>
-      OBJ.forEach((col) => {
-        const TR = document.createElement("tr");
-        TR.innerHTML = `
-                    <td>${col.colaboradorId}</td>
-                    <td>${col.nome}</td>
-                    <td>${col.departamento}</td>
-                    <td>${col.andar}</td>
-                    <td>${col.ramal}</td>
-                `;
-        TBODY.appendChild(TR);
-      });
+      // limpa antes de redenrizar
+      container.innerHTML = "";
 
       if (OBJ.length === 0) {
-        TBODY.innerHTML = `
-                    <tr>
-                        <td colspan="6" style="text-align:center">
-                            Nenhum colaborador encontrado.
-                        </td>
-                    </tr>`;
+        container.innerHTML = `
+          <div class="alert alert-info">Nenhum colaborador encontrado.</div>
+        `;
+        return;
       }
+
+      OBJ.forEach((col) => {
+        const ticket = document.createElement("div");
+        ticket.className = "card ticket-card mb-4 position-relative";
+        ticket.innerHTML = `
+          <div class="status-dot"></div>
+          <div class="row g-0">
+            <div class="col-auto">
+              <div class="ticket-avatar">
+                ${col.nome.charAt(0).toUpperCase()}
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title mb-1">${col.nome}</h5>
+                <p class="card-text mb-1">
+                  <i class="bi bi-envelope-fill me-1"></i>
+                  ${col.email}
+                </p>
+                <p class="card-text text-muted mb-2">
+                  <i class="bi bi-briefcase-fill me-1"></i>
+                  ${col.contrato}
+                </p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-secondary">
+                    ${col.nome.charAt(0).toUpperCase()}
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary">
+                    <i class="bi bi-clock-fill"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
     } catch (err) {
       console.error(err);
       TBODY.innerHTML = `
