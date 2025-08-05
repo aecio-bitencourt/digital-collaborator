@@ -1,36 +1,29 @@
 // Aguarda até que o DOM esteja pronto
 document.addEventListener("DOMContentLoaded", () => {
   const URL = "http://localhost:5032/api/colaboradores";
-  const container = document.getElementById("tickets-container");
+  const CONTAINER = document.getElementById("tickets-CONTAINER");
 
   // Função para consumir a API e exibir os dados
   async function loadCollaborators() {
     try {
-      const RESPONSE = await fetch(URL, {
-        method: "GET",
-      });
-
-      if (!RESPONSE.ok) {
-        throw new Error("Erro na requisição: " + RESPONSE.status);
-      }
-
-      // Limpe o corpo da tabela
-      const OBJ = await RESPONSE.json();
+      const RES = await fetch(URL);
+      if (!RES.ok) throw new Error(RES.status);
+      const OBJ = await RES.json();
 
       // limpa antes de redenrizar
-      container.innerHTML = "";
+      CONTAINER.innerHTML = "";
 
       if (OBJ.length === 0) {
-        container.innerHTML = `
+        CONTAINER.innerHTML = `
           <div class="alert alert-info">Nenhum colaborador encontrado.</div>
         `;
         return;
       }
 
       OBJ.forEach((col) => {
-        const ticket = document.createElement("div");
-        ticket.className = "card ticket-card mb-4 position-relative";
-        ticket.innerHTML = `
+        const TICKET = document.createElement("div");
+        TICKET.className = "card ticket-card mb-4 position-relative";
+        TICKET.innerHTML = `
           <div class="status-dot"></div>
           <div class="row g-0">
             <div class="col-auto">
@@ -61,15 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         `;
+        CONTAINER.appendChild(TICKET);
       });
     } catch (err) {
       console.error(err);
-      TBODY.innerHTML = `
-                <tr>
-                    <td colspan="6" style="text-align:center; color:red">
-                        Falha ao carregar colaboradores.
-                    </td>
-                </tr>`;
+      CONTAINER.innerHTML = `
+        <div class="alert alert-danger">
+          Falha ao carregar colaboradores.
+        </div>
+      `;
     }
   }
 
@@ -85,18 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const RESPONSE = await fetch(URL, {
+      const RES = await fetch(URL, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(DATA),
       });
 
-      if (RESPONSE.status === 201 || RESPONSE.status === 200) {
+      if (RES.status === 201 || RES.status === 200) {
         FORM.reset();
         await loadCollaborators();
       } else {
-        const MSG = await RESPONSE.text();
-        alert(`Falha (${RESPONSE.status}): ${MSG}`);
+        const MSG = await RES.text();
+        alert(`Falha (${RES.status}): ${MSG}`);
       }
     } catch (err) {
       console.error(err);
