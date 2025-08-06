@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const TICKET = document.createElement("div");
         TICKET.className = "card ticket-card mb-4 position-relative";
         TICKET.innerHTML = `
-          <div class="status-dot"></div>
           <div class="row g-0">
             <div class="col-auto">
               <div class="ticket-avatar">
