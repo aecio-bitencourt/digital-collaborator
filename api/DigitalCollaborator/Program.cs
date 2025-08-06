@@ -10,7 +10,7 @@ var connString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddCors(opts =>
 {
     opts.AddPolicy("AllowFrontend", p => p
-        .WithOrigins("http://127.0.0.1:5500")
+        .WithOrigins("http://127.0.0.1:5501")
         .AllowAnyMethod()
         .AllowAnyHeader());
 });
