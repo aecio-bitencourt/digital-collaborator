@@ -1,7 +1,7 @@
 // Aguarda até que o DOM esteja pronto
 document.addEventListener("DOMContentLoaded", () => {
-  const URL = "http://localhost:5032/api/colaboradores";
-  const CONTAINER = document.getElementById("tickets-CONTAINER");
+  const URL = "http://localhost:5502/api/colaboradores";
+  const CONTAINER = document.getElementById("tickets-container");
 
   // Função para consumir a API e exibir os dados
   async function loadCollaborators() {
@@ -65,38 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }
   }
-
-  FORM.addEventListener("submit", async (ev) => {
-    ev.preventDefault();
-
-    // Dados do formulário de cadastro de um novo colaborador
-    const DATA = {
-      nome: FORM.nome.value,
-      departamento: FORM.departamento.value,
-      andar: parseInt(FORM.andar.value, 10),
-      ramal: parseInt(FORM.ramal.value, 10),
-    };
-
-    try {
-      const RES = await fetch(URL, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(DATA),
-      });
-
-      if (RES.status === 201 || RES.status === 200) {
-        FORM.reset();
-        await loadCollaborators();
-      } else {
-        const MSG = await RES.text();
-        alert(`Falha (${RES.status}): ${MSG}`);
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Erro de rede ou servidor.");
-    }
-  });
-
   // Chama a função no início
   loadCollaborators();
 });
