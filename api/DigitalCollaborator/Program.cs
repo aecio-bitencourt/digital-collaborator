@@ -1,5 +1,6 @@
 using DigitalCollaborator.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Ativa arquivos estáticos
+app.UseStaticFiles();
 
 // Executa APENAS em ambiente de desenvolvimento
 if (app.Environment.IsDevelopment())
