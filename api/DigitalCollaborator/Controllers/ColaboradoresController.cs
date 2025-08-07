@@ -30,7 +30,8 @@ namespace DigitalCollaborator.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Colaborador>>> GetAllColaboradores()
         {
-            var baseUrl = $"{Request.Scheme}://{Request.Host.Value}";
+            var baseUrl = $"{Request.Scheme}://{Request.Host}";
+            var avatarPath = "/images/avatars/";
             var colaboradores = await _appDbContext.Colaboradores.ToListAsync();
             // Mapeamento em ColaboradoresDto já construindo a URL de acesso aos arquivos de imagens
             var colaboradoresDto = colaboradores.Select(c => new ColaboradoresDto
@@ -40,9 +41,12 @@ namespace DigitalCollaborator.Controllers
                 Departamento = c.Departamento,
                 Andar = c.Andar,
                 Ramal = c.Ramal,
-                AvatarFile = c.AvatarFile
+                AvatarFile = c.AvatarFile,
+                AvatarUrl = string.IsNullOrEmpty(c.AvatarFile)
+                    ? null
+                    : $"{baseUrl}{avatarPath}{c.AvatarFile}"
             });
-            return Ok(colaboradores);
+            return Ok(colaboradoresDto);
         }
     }
 }

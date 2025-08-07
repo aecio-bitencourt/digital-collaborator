@@ -12,13 +12,14 @@ public class Colaborador
     [Column("departamento")] public string Departamento { get; private set; }
     [Column("andar")] public int Andar { get; private set; }
     [Column("ramal")] public int Ramal { get; private set; }
-    [Column("avatar_file")] public string AvatarFile { get; set; }
+    [Column("avatar_file")] public string AvatarFile { get; private set; }
 
-    public Colaborador(string nome, string departamento, int andar, int ramal)
+    public Colaborador(string nome, string departamento, int andar, int ramal, string avatarFile)
     {
         Nome = nome;
         Departamento = departamento;
         Andar = andar;
         Ramal = ramal;
+        AvatarFile = avatarFile;
     }
 }
