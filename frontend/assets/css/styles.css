@@ -9,12 +9,11 @@
       width: 0.75rem;
       height: 0.75rem;
       border-radius: 50%;
-      background-color: #ffc107; /* amarelo */
+      background-color: #ffc107;
     }
     .ticket-avatar {
       width: 100px;
       height: 100px;
-      background-color: #a71d31; /* cor de fundo */
       color: #fff;
       font-size: 2.5rem;
       font-weight: bold;
@@ -22,3 +21,4 @@
       align-items: center;
       justify-content: center;
     }
+    
