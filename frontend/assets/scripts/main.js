@@ -2,15 +2,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const URL = "http://localhost:5502/api/colaboradores";
   const CONTAINER = document.getElementById("tickets-container");
+  const PLACEHOLDER = "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png";
 
   // Função para consumir a API e exibir os dados
   async function loadCollaborators() {
     try {
       const RES = await fetch(URL);
-      if (!RES.ok) throw new Error(RES.status);
+      if (!RES.ok) {
+        throw new Error(RES.status);
+      }
       const OBJ = await RES.json();
 
-      // limpa antes de redenrizar
+      // Limpa antes de redenrizar
       CONTAINER.innerHTML = "";
 
       if (OBJ.length === 0) {
@@ -21,13 +24,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       OBJ.forEach((col) => {
+        // Obtendo URL diretamente sem concatenação, dica do Otavio
+        const avatarUrl = col.avatarUrl;
         const TICKET = document.createElement("div");
+
         TICKET.className = "card ticket-card mb-4 position-relative";
         TICKET.innerHTML = `
           <div class="row g-0">
             <div class="col-auto">
               <div class="ticket-avatar">
-                ${col.nome.charAt(0).toUpperCase()}
+              <img
+                  src="${avatarUrl}"
+                  alt="${col.nome}"
+                  class="img-fluid rounded-circle"
+                  width="100" height="100"
+                  onerror="this.onerror=null;this.src='${PLACEHOLDER}';"
+                />
               </div>
             </div>
             <div class="col">
