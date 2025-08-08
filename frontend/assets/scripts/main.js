@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const URL = "http://localhost:5502/api/colaboradores";
   const CONTAINER = document.getElementById("tickets-container");
+  const NAV_DEPARTMENT = document.getElementById("nav-department");
   const PLACEHOLDER =
     "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png";
 
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Limpa antes de redenrizar
       CONTAINER.innerHTML = "";
+      NAV_DEPARTMENT.innerHTML = "";
 
       if (OBJ.length === 0) {
         CONTAINER.innerHTML = `
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Obtendo URL diretamente sem concatenação, dica do Otavio
         const avatarUrl = col.avatarUrl;
         const TICKET = document.createElement("div");
+        const ITEM_DEPARTMENT = document.createElement("li");
 
         TICKET.className = "card ticket-card mb-4 position-relative";
         TICKET.innerHTML = `
@@ -72,6 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
         CONTAINER.appendChild(TICKET);
+
+        ITEM_DEPARTMENT.className = "nav-item";
+        ITEM_DEPARTMENT.innerHTML = `<a class="nav-link active" aria-current="page" href="#">${col.departamento}</a>`; //Atualizar para capturar os departamentos cadastrados na tabela departamentos
+        NAV_DEPARTMENT.appendChild(ITEM_DEPARTMENT);
       });
     } catch (err) {
       console.error(err);
