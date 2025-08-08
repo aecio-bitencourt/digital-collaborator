@@ -2,7 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const URL = "http://localhost:5502/api/colaboradores";
   const CONTAINER = document.getElementById("tickets-container");
-  const PLACEHOLDER = "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png";
+  const PLACEHOLDER =
+    "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png";
 
   // Função para consumir a API e exibir os dados
   async function loadCollaborators() {
@@ -50,9 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
                   ${col.email}
                 </p>
                 <p class="card-text text-muted mb-2">
-                  <i class="bi bi-briefcase-fill me-1"></i>
-                  ${col.contrato}
+                  <i class="bi bi-telephone-fill"></i>
+                  ${col.ramal}
                 </p>
+                <p class="card-text text-muted mb-2">
+                  <i class="bi bi-building"></i>
+                  ${col.departamento}
+                </p>
+
                 <div class="d-flex gap-2">
                   <button class="btn btn-sm btn-outline-secondary">
                     ${col.nome.charAt(0).toUpperCase()}
