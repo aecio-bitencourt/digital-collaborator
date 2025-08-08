@@ -41,6 +41,7 @@ namespace DigitalCollaborator.Controllers
                 Departamento = c.Departamento,
                 Andar = c.Andar,
                 Ramal = c.Ramal,
+                Email = c.Email,
                 AvatarFile = c.AvatarFile,
                 AvatarUrl = string.IsNullOrEmpty(c.AvatarFile)
                     ? null

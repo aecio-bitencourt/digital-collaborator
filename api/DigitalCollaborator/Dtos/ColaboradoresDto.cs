@@ -7,6 +7,7 @@ public class ColaboradoresDto
     public string Departamento { get; set; }
     public int Andar { get; set; }
     public int Ramal { get; set; }
+    public string Email { get; set; }
     public string AvatarFile { get; set; }
     public string AvatarUrl { get; set; }
 }
