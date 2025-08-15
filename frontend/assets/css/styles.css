@@ -1,24 +1,23 @@
-    .ticket-card {
-      position: relative;
-      max-width: 600px;
-    }
-    .ticket-card .status-dot {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      width: 0.75rem;
-      height: 0.75rem;
-      border-radius: 50%;
-      background-color: #ffc107;
-    }
-    .ticket-avatar {
-      width: 100px;
-      height: 100px;
-      color: #fff;
-      font-size: 2.5rem;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
+.ticket-card {
+  position: relative;
+  max-width: 600px;
+}
+.ticket-card .status-dot {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #ffc107;
+}
+.ticket-avatar {
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
