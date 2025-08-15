@@ -18,8 +18,14 @@ async function getAllCollaborators() {
     divTickets.className = "card ticket-card mb-4 position-relative";
 
     // Elementos dentro da div de tickets
-    
+    const divRow = document.createElement("div");
+    const divColAuto = document.createElement("div");
 
+    divRow.className = "row g-0";
+    divColAuto.className = "col-auto";
+
+    divRow.append(divColAuto);
+    divTickets.append(divRow);
     ticketsContainer.append(divTickets);
   });
 }
