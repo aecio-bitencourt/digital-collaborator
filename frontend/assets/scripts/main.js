@@ -21,17 +21,29 @@ async function getAllCollaborators() {
     const divRow = document.createElement("div");
     const divColAuto = document.createElement("div");
     const divTicketAvatar = document.createElement("div");
+    const imgAvatar = document.createElement("img");
+    const divCol = document.createElement("div");
+    const divCard = document.createElement("div");
 
     divRow.className = "row g-0";
     divColAuto.className = "col-auto";
     divTicketAvatar.className = "ticket-avatar";
+    imgAvatar.className = "img-fluid rounded-circle";
+    divCol.className = "col";
+    divCard.className = "card-body";
+
+    imgAvatar.setAttribute("src", `${ticket.avatarUrl}`);
+    imgAvatar.setAttribute("alt", `${ticket.nome}`);
+    imgAvatar.setAttribute("width", "100");
+    imgAvatar.setAttribute("height", "100");
 
     divTickets.append(divRow);
-    divRow.append(divColAuto);
+    divRow.append(divColAuto, divCol);
     divColAuto.append(divTicketAvatar);
+    divTicketAvatar.append(imgAvatar);
+    divCol.append(divCard);
     ticketsContainer.append(divTickets);
   });
 }
-
 // Chamando a função
 getAllCollaborators();
