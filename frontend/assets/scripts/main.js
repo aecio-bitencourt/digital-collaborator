@@ -20,12 +20,15 @@ async function getAllCollaborators() {
     // Elementos dentro da div de tickets
     const divRow = document.createElement("div");
     const divColAuto = document.createElement("div");
+    const divTicketAvatar = document.createElement("div");
 
     divRow.className = "row g-0";
     divColAuto.className = "col-auto";
+    divTicketAvatar.className = "ticket-avatar";
 
-    divRow.append(divColAuto);
     divTickets.append(divRow);
+    divRow.append(divColAuto);
+    divColAuto.append(divTicketAvatar);
     ticketsContainer.append(divTickets);
   });
 }
