@@ -25,8 +25,7 @@ async function getAllCollaborators() {
     const divCol = document.createElement("div");
     const divCard = document.createElement("div");
     const cardTitle = document.createElement("h5");
-    const pCard = document.createElement("p");
-    const iCard = document.createElement("i");
+    const pCardEmail = document.createElement("p");
 
     divRow.className = "row g-0";
     divColAuto.className = "col-auto";
@@ -35,23 +34,21 @@ async function getAllCollaborators() {
     divCol.className = "col";
     divCard.className = "card-body";
     cardTitle.className = "card-title mb-1";
-    pCard.className = "card-text mb-1";
-    iCard.className = "bi bi-envelope-fill me-1";
+    pCardEmail.className = "card-text mb-1";
 
     imgAvatar.setAttribute("src", `${ticket.avatarUrl}`);
     imgAvatar.setAttribute("alt", `${ticket.nome}`);
     imgAvatar.setAttribute("width", "100");
     imgAvatar.setAttribute("height", "100");
     cardTitle.innerText = ticket.nome;
-    pCard.innerText = ticket.email;
+    pCardEmail.innerText = ticket.email;
 
     divTickets.append(divRow);
     divRow.append(divColAuto, divCol);
     divColAuto.append(divTicketAvatar);
     divTicketAvatar.append(imgAvatar);
     divCol.append(divCard);
-    divCard.append(cardTitle, pCard);
-    pCard.append(iCard);
+    divCard.append(cardTitle, pCardEmail);
     ticketsContainer.append(divTickets);
   });
 }
